@@ -35,10 +35,12 @@ class BoxTree {
             }
 
             void remove(int boxNum) {
-                if (this != nullptr) {
+                if (this->data != nullptr) {
                     int currNum = this->data->getNum();
                     if (currNum == boxNum) {
-                        delete this;
+                        delete this->data;
+                        this->data = nullptr;
+
                         return;
                     }
 
@@ -65,6 +67,8 @@ class BoxTree {
         void remove(int);
         BoxList* getRange(int start, int end);
         void printLeaves();
+
+        void deleteLeaves(Node *node);
 };
 
 #endif //PLANTERS_BOXTREE_H

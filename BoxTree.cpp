@@ -22,14 +22,23 @@ BoxTree::BoxTree() {
 //output: none
 //return: none
 BoxTree::~BoxTree() {
-//    while (root != nullptr) {
-//        Node* temp = head;
-//        head = head->next;
-//        delete temp;
-//    }
-//    head = nullptr;
-//    size = 0;
+    deleteLeaves(root);
 };
+
+void BoxTree::deleteLeaves(Node *node) {
+    if (node) {
+        if (node->leftNode) {
+            deleteLeaves(node->leftNode);
+        }
+        if (node->rightNode) {
+            deleteLeaves(node->rightNode);
+        }
+        delete node->data;
+        node->data = nullptr;
+        delete node;
+        node = nullptr;
+    }
+}
 
 //Name:   LinkedList
 //Desc:   Copy constructor for LinkedList class.

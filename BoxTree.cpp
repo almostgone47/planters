@@ -140,7 +140,7 @@ void BoxTree::getRangeRecursive(Node *node, const int start, const int end, BoxL
     }
 
     if (currNum >= start && currNum <= end) {
-        list->insertAtTail(*node->data);
+        list->insertAtTail(node->data);
     }
 
     if (currNum <= end) {

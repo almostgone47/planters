@@ -6,7 +6,8 @@
 
 Box::Box() {
     this->boxNum = 0;
-    this->plantName = "";
+    this->plantName = new char[1];
+    strcpy(this->plantName, "");
 }
 
 Box::Box(int boxNum, const char *plantName) {
@@ -32,6 +33,7 @@ Box& Box::operator=(const Box &box) {
         plantName = new char[strlen(box.plantName) + 1];
         strcpy(plantName, box.plantName);
     }
+
     return *this;
 }
 

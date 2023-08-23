@@ -62,27 +62,33 @@ BoxList::BoxList(const BoxList &list) {
 //input:  Person object to be inserted into the linked list.
 //output: none
 //return: none
-void BoxList::insertAtTail(Box box) {
+void BoxList::insertAtTail(Box *box) {
     Node *curr = head;
     Node *newNode = new Node();
     newNode->data = box;
 
-    while (curr->next) {
-        curr = curr->next;
+    if (curr == nullptr) {
+        head = newNode;
+    } else {
+        while (curr->next) {
+            curr = curr->next;
+        }
+
+        curr->next = newNode;
     }
 
-    curr->next = newNode;
     size++;
 }
 
 void BoxList::startIterating() {
     mCurrent = head;
-
 }
 
-const Box& BoxList::getNextBox() {
+const Box* BoxList::getNextBox() {
     if (mCurrent != nullptr) {
-        return mCurrent->data;
+        Box *temp = mCurrent->data;
+        mCurrent = mCurrent->next;
+        return temp;
     }
 }
 

@@ -10,7 +10,8 @@ void runTest()
 
     Box b1(1,"one");
     passed &= checkInt(b1.getNum(),1);
-    passed &= checkStr(b1.getPlantName(),"one");
+    char *name = b1.getPlantName();
+    passed &= checkStr(name,"one");
 
     if (passed)
     {

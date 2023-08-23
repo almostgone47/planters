@@ -13,9 +13,19 @@ void PlanterMgr::plant(int boxNumber, const char *plantName) {
 
 void PlanterMgr::harvest(const char *plantName, int start, int end) {
     BoxList list = tree.getRange(start, end);
-//    For each Box, it
-//    checks to see if that Box plant name matches the one passed to harvest(). If
-//    so, then it prints a message that that plant is being harvested.
+    cout << "The following boxes will be harvested:" << endl;
+    cout << "Harvesting " << plantName << " plants from boxes " << start << " to " << end << "." << endl;
+    list.startIterating();
+    while (list.hasNextBox()) {
+        /// There's a problem here when the box gets copied I think
+        const Box *box = list.getNextBox();
+        char *name = box->getPlantName();
+//        if (strcmp(name, plantName) == 0) {
+//            cout << "The following boxes will be harvested:" << endl;
+//            cout << "Harvesting " << plantName << " plants from boxes " << start << " to " << end << "." << endl;
+//        }
+    }
+
 }
 
 void PlanterMgr::prune(int boxNumber) {

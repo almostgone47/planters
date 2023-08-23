@@ -12,7 +12,7 @@
 class BoxList {
     private:
         struct Node {
-            Box data;
+            Box *data;
             Node *next;
         };
 
@@ -25,9 +25,9 @@ class BoxList {
         ~BoxList();
         BoxList(const BoxList &list);
 
-        void insertAtTail(Box);
+        void insertAtTail(Box*);
         void startIterating();
-        const Box& getNextBox();
+        const Box* getNextBox();
         bool hasNextBox();
 
 };

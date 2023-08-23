@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
-#include "box.h"
-#include "boxtree.h"
+#include "Box.h"
+#include "BoxTree.h"
 
 using namespace std;
 
@@ -14,7 +14,8 @@ void runTest(const int numValues,const int* values,const int numRemoveValues,con
 
     for (int i=0;i<numValues;i++)
     {
-	bt.insert(Box(values[i],"b"));
+        Box *box = new  Box(values[i],"one");
+	    bt.insert(box);
     }
 
     bt.inorder();

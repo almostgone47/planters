@@ -9,13 +9,13 @@
 
 #include "Box.h"
 
-struct Node {
-    Box data;
-    Node *next;
-};
-
 class BoxList {
     private:
+        struct Node {
+            Box data;
+            Node *next;
+        };
+
         Node *head;
         int size = 0;
 

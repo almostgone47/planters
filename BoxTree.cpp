@@ -89,15 +89,21 @@ const BoxTree & BoxTree::operator= (const BoxTree &tree) {
 //        }
 //    }
 //
-//    return *this;
+    return *this;
 }
 
 void BoxTree::inorder() {
 
 }
 
-void BoxTree::insert(Box box) {
-
+void BoxTree::insert(Box *box) {
+    if (root == nullptr) {
+        Node *newNode = new Node();
+        newNode->data = box;
+        root = newNode;
+    } else {
+        root->insert(box);
+    }
 }
 
 void BoxTree::remove(int boxNum)  {
@@ -105,7 +111,8 @@ void BoxTree::remove(int boxNum)  {
 }
 
 BoxList* BoxTree::getRange(int start, int end) {
-
+    BoxList *list = new BoxList();
+    return list;
 }
 
 void BoxTree::printLeaves() {

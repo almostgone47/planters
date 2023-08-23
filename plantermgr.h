@@ -7,7 +7,7 @@
 
 #include "BoxTree.h"
 
-class plantermgr {
+class PlanterMgr {
     private:
         BoxTree tree;
     public:

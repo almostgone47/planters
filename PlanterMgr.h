@@ -8,9 +8,12 @@
 #include "BoxTree.h";
 
 class PlantMgr {
-private:
-    BoxTree tree;
-public:
+    private:
+        BoxTree tree;
+    public:
+        void plant(int boxNumber, const char *plantName);
+        void harvest(int start, int end, const char *plantName);
+        void prune(int boxNumber);
 };
 
 #endif //PLANTERS_PLANTERMGR_H

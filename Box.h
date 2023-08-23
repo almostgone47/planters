@@ -10,20 +10,21 @@
 using namespace std;
 
 class Box {
-private:
-    int num;
-    char *plantName;
+    private:
+        int num;
+        char *plantName;
 
-public:
-    Box();
-    Box(int num, const char *plantName);
-    ~Box();
-    Box(const Box &other);
-    Box& operator=(const Box &other);
+    public:
+        Box();
+        Box(int num, const char *plantName);
+        ~Box();
+        Box(const Box &other);
+        Box& operator=(const Box &other);
 
-    int getNum() const;
-    char* getPlantName() const;
-    void print();
+        int getNum() const;
+        char* getPlantName() const;
+        void print();
+
 };
 
 #endif //PLANTERS_BOX_H

@@ -7,11 +7,22 @@
 
 #include "Box.h";
 
+struct Node {
+    Box data;
+    Node *leftNode;
+    Node *rightNode;
+};
+
 class BoxTree {
-private:
-    Box head;
-    int size;
-public:
+    private:
+        Node *root;
+
+    public:
+        void inorder();
+        void insert(Box);
+        void remove(int);
+        BoxList* getRange(int start, int end);
+        void printLeaves();
 };
 
 #endif //PLANTERS_BOXTREE_H

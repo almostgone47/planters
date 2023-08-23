@@ -122,9 +122,30 @@ void BoxTree::remove(int boxNum)  {
     totalLeaves--;
 }
 
-BoxList* BoxTree::getRange(int start, int end) {
+BoxList BoxTree::getRange(const int start, const int end) {
     BoxList *list = new BoxList();
-    return list;
+    getRangeRecursive(root, start, end, list);
+    return *list;
+}
+
+void BoxTree::getRangeRecursive(Node *node, const int start, const int end, BoxList *list) {
+    if (node == nullptr) {
+        return;
+    }
+
+    int currNum = node->data->getNum();
+
+    if (currNum >= start) {
+        getRangeRecursive(node->leftNode, start, end, list);
+    }
+
+    if (currNum >= start && currNum <= end) {
+        list->insertAtTail(*node->data);
+    }
+
+    if (currNum <= end) {
+        getRangeRecursive(node->rightNode, start, end, list);
+    }
 }
 
 void BoxTree::printLeaves() {

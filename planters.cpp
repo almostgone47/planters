@@ -9,7 +9,7 @@ using namespace std;
 enum ProcessState {NONE,PLANTING,HARVESTING,PRUNING};
 
 // Plant a plant
-void plant(PlanterMgr& planterMgr,char* line)
+void plant(plantermgr& planterMgr, char* line)
 {
     int num = 0;
     char* name = nullptr;
@@ -25,7 +25,7 @@ void plant(PlanterMgr& planterMgr,char* line)
 }
 
 // Harvest a plant
-void harvest(PlanterMgr& planterMgr,char* line)
+void harvest(plantermgr& planterMgr, char* line)
 {
     char* name = nullptr;
     int start = 0;
@@ -53,7 +53,7 @@ void harvest(PlanterMgr& planterMgr,char* line)
 }
 
 // Prune a plant
-void prune(PlanterMgr& planterMgr,char* line)
+void prune(plantermgr& planterMgr, char* line)
 {
     int num = 0;
 
@@ -70,7 +70,7 @@ int main(int argc,char** argv)
 	exit(0);
     }
 
-    PlanterMgr planterMgr;
+    plantermgr planterMgr;
     ProcessState state = NONE;
 
     char* datafile = argv[1];

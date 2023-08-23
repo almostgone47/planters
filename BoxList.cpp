@@ -90,7 +90,7 @@ const BoxList & BoxList::operator= (const BoxList &list) {
     }
 
     return *this;
-};
+}
 
 //Name:   insertFront
 //Desc:   Adds a Node to the front of the linked list.

@@ -5,14 +5,14 @@
 #ifndef PLANTERS_PLANTERMGR_H
 #define PLANTERS_PLANTERMGR_H
 
-#include "BoxTree.h";
+#include "BoxTree.h"
 
-class PlantMgr {
+class plantermgr {
     private:
         BoxTree tree;
     public:
         void plant(int boxNumber, const char *plantName);
-        void harvest(int start, int end, const char *plantName);
+        void harvest(const char *plantName, int start, int end);
         void prune(int boxNumber);
 };
 

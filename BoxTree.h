@@ -33,9 +33,26 @@ class BoxTree {
                     this->rightNode = newNode;
                 }
             }
+
+            void remove(int boxNum) {
+                if (this != nullptr) {
+                    int currNum = this->data->getNum();
+                    if (currNum == boxNum) {
+                        delete this;
+                        return;
+                    }
+
+                    if (currNum < boxNum && this->rightNode) {
+                        this->rightNode->remove(boxNum);
+                    } else if  (currNum > boxNum && this->leftNode) {
+                        this->leftNode->remove(boxNum);
+                    }
+                }
+            }
         };
 
         Node *root;
+        int totalLeaves;
 
     public:
         BoxTree();

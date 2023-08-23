@@ -12,6 +12,7 @@
 //return: none
 BoxTree::BoxTree() {
     root = nullptr;
+    totalLeaves = 0;
 }
 
 //Name:   ~BoxList
@@ -104,10 +105,12 @@ void BoxTree::insert(Box *box) {
     } else {
         root->insert(box);
     }
+    totalLeaves++;
 }
 
 void BoxTree::remove(int boxNum)  {
-
+    root->remove(boxNum);
+    totalLeaves--;
 }
 
 BoxList* BoxTree::getRange(int start, int end) {
@@ -116,5 +119,5 @@ BoxList* BoxTree::getRange(int start, int end) {
 }
 
 void BoxTree::printLeaves() {
-
+    cout << totalLeaves << endl;
 }

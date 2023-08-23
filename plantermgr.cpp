@@ -19,6 +19,6 @@ void PlanterMgr::harvest(const char *plantName, int start, int end) {
 }
 
 void PlanterMgr::prune(int boxNumber) {
-//    The prune() method accepts a box number. It calls BoxTree::remove() with that
-//    box number. It prints a message indicating that the plant was pruned.
+    cout << "Pruning box number " << boxNumber << "." << endl;
+    tree.remove(boxNumber);
 }

@@ -5,10 +5,12 @@
 #include "Box.h"
 
 Box::Box() {
+    this->boxNum = 0;
+    this->plantName = "";
 }
 
-Box::Box(int num, const char *plantName) {
-    this->num = num;
+Box::Box(int boxNum, const char *plantName) {
+    this->boxNum = boxNum;
     this->plantName = new char[strlen(plantName) + 1];
     strcpy(this->plantName, plantName);
 }
@@ -18,7 +20,7 @@ Box::~Box() {
 }
 
 Box::Box(const Box &box) {
-    num = box.num;
+    boxNum = box.boxNum;
     plantName = new char[strlen(box.plantName) + 1];
     strcpy(plantName, box.plantName);
 }
@@ -26,7 +28,7 @@ Box::Box(const Box &box) {
 Box& Box::operator=(const Box &box) {
     if (this != &box) {
         delete[] plantName;
-        num = box.num;
+        boxNum = box.boxNum;
         plantName = new char[strlen(box.plantName) + 1];
         strcpy(plantName, box.plantName);
     }
@@ -34,7 +36,7 @@ Box& Box::operator=(const Box &box) {
 }
 
 int Box::getNum() const {
-    return num;
+    return boxNum;
 }
 
 char* Box::getPlantName() const {
@@ -42,5 +44,5 @@ char* Box::getPlantName() const {
 }
 
 void Box::print() {
-    cout << num << ", " << plantName << endl;
+    cout << boxNum << ". " << plantName << endl;
 }

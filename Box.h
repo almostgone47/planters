@@ -11,7 +11,7 @@ using namespace std;
 
 class Box {
     private:
-        int num;
+        int boxNum;
         char *plantName;
 
     public:

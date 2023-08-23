@@ -57,121 +57,39 @@ BoxList::BoxList(const BoxList &list) {
     }
 };
 
-//Name:   operator=
-//Desc:   Redefines = to perform deep copy.
-//input:  Reference to the linked list to copy from.
-//output: none
-//return: A reference to the linked list that used the method to copy.
-const BoxList & BoxList::operator= (const BoxList &list) {
-    if (this != &list) {
-        while (head != nullptr) {
-            Node *temp = head;
-            head = head->next;
-            delete temp;
-        }
-        size = 0;
-
-        Node *curr = list.head;
-        Node *prev = nullptr;
-
-        while (curr) {
-            Node *newNode = new Node();
-            newNode->data = curr->data;
-
-            if (prev == nullptr) {
-                head = newNode;
-            } else {
-                prev->next = newNode;
-            }
-
-            prev = newNode;
-            curr = curr->next;
-        }
-    }
-
-    return *this;
-}
-
 //Name:   insertFront
-//Desc:   Adds a Node to the front of the linked list.
+//Desc:   Adds a Node to the end of the linked list.
 //input:  Person object to be inserted into the linked list.
 //output: none
 //return: none
-void BoxList::insertFront(Box box) {
+void BoxList::insertAtTail(Box box) {
+    Node *curr = head;
     Node *newNode = new Node();
     newNode->data = box;
-    newNode->next = head;
-    head = newNode;
+
+    while (curr->next) {
+        curr = curr->next;
+    }
+
+    curr->next = newNode;
     size++;
 }
 
-//Name:   removeById
-//Desc:   Removes the first Node that matches the passed in Box id.
-//input:  A string representing the id of the person object to be removed.
-//output: none
-//return: none
-void BoxList::removeById(int id) {
-    Node *curr = head, *prev = nullptr;
+void BoxList::startIterating() {
+    mCurrent = head;
 
-    while(curr) {
-        if (id == curr->data.getNum()) {
-            if (prev == nullptr) {
-                head = curr->next;
-            } else {
-                prev->next = curr->next;
-            }
+}
 
-            delete curr;
-            size--;
-            return;
-        }
-        prev = curr;
-        curr = curr->next;
+const Box& BoxList::getNextBox() {
+    if (mCurrent != nullptr) {
+        return mCurrent->data;
     }
 }
 
-//Name:   searchById
-//Desc:   Searches for a matching Person id to the passed in id argument.
-//input:  A string representing the id of the person object to be returned.
-//output: none
-//return: A pointer to a person object searched ror.
-Box* BoxList::searchById(int id) const {
-    Node *curr = head;
-    Box *box = nullptr;
-
-    while(curr) {
-        if (id == curr->data.getNum()) {
-            box = &curr->data;
-            break;
-        }
-        curr = curr->next;
+bool BoxList::hasNextBox() {
+    bool hasNext = true;
+    if (mCurrent == nullptr) {
+        hasNext = false;
     }
-
-    return box;
+    return hasNext;
 }
-
-//Name:   printList
-//Desc:   Loops through each Box and calls the Box print method.
-//input:  none
-//output: The person object details.
-//return: none
-void BoxList::printList() const {
-    Node *curr = head;
-
-    while(curr) {
-        curr->data.print();
-        curr = curr->next;
-    }
-}
-
-//void BoxList::startIterating() {
-//
-//}
-//
-//const Box& BoxList::getNextBox() {
-//
-//}
-//
-//bool BoxList::hasNextBox() {
-//
-//}

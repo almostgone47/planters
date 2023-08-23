@@ -17,22 +17,18 @@ class BoxList {
         };
 
         Node *head;
+        Node *mCurrent; //"the next value to give to the caller".
         int size = 0;
 
     public:
         BoxList();
         ~BoxList();
         BoxList(const BoxList &list);
-        const BoxList & operator= (const BoxList &list);
 
-        void insertFront(Box);
-        void removeById(int);
-        Box* searchById(int) const;
-        void printList() const;
-//
-//        void startIterating();
-//        const Box& getNextBox();
-//        bool hasNextBox();
+        void insertAtTail(Box);
+        void startIterating();
+        const Box& getNextBox();
+        bool hasNextBox();
 
 };
 

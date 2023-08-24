@@ -7,16 +7,13 @@
 
 void PlanterMgr::plant(int boxNumber, const char *plantName) {
     Box *box = new Box(boxNumber, plantName);
-    if (boxNumber == 95139) {
-        cout << "";
-    }
     cout << "Planting " << plantName <<" in box " << boxNumber << endl;
     tree.insert(box);
 }
 
 void PlanterMgr::harvest(const char *plantName, int start, int end) {
     BoxList list = tree.getRange(start, end);
-    cout << "Harvesting " << plantName << " plants from boxes " << start << " to " << end << "." << endl;
+    cout << "Harvesting " << plantName << " plants from boxes " << start << " to " << end << ". " << endl;
     cout << "The following boxes will be harvested: ";
 
     list.startIterating();

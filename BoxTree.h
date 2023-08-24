@@ -37,10 +37,15 @@ class BoxTree {
         void remove(int);
         void remove(Node*, int);
         void deleteNode (Node *, int);
+        void restructureTree(Node *node);
         BoxList getRange(const int start,const int stop);
-        void printLeaves();
         void getRangeRecursive(Node *node, const int start, const int end, BoxList *list);
         void deleteTree(Node *&node);
+        // For tests
+        void inorder();
+        void printTree(Node *node, int level);
+        void printLeaves();
+
 };
 
 #endif //PLANTERS_BOXTREE_H

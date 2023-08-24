@@ -18,6 +18,7 @@ Box::Box(int boxNum, const char *plantName) {
 
 Box::~Box() {
     delete[] plantName;
+    plantName = nullptr;
 }
 
 Box::Box(const Box &box) {
@@ -43,8 +44,4 @@ int Box::getNum() const {
 
 char* Box::getPlantName() const {
     return plantName;
-}
-
-void Box::print() {
-    cout << boxNum << ". " << plantName << endl;
 }

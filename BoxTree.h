@@ -15,41 +15,10 @@ class BoxTree {
             Node *leftNode;
             Node *rightNode;
 
-            void insert(Box *box) {
-                int newBoxNum = box->getNum();
-                int currNum = this->data->getNum();
-
-                if (newBoxNum < currNum && this->leftNode != nullptr) {
-                    this->leftNode->insert(box);
-                } else if (newBoxNum < currNum) {
-                    Node *newNode = new Node();
-                    newNode->data = box;
-                    this->leftNode = newNode;
-                } else if (newBoxNum > currNum && this->rightNode != nullptr) {
-                    this->rightNode->insert(box);
-                } else if (newBoxNum > currNum) {
-                    Node *newNode = new Node();
-                    newNode->data = box;
-                    this->rightNode = newNode;
-                }
-            }
-
-            void remove(int boxNum) {
-                if (this->data != nullptr) {
-                    int currNum = this->data->getNum();
-                    if (currNum == boxNum) {
-                        delete this->data;
-                        this->data = nullptr;
-
-                        return;
-                    }
-
-                    if (currNum < boxNum && this->rightNode) {
-                        this->rightNode->remove(boxNum);
-                    } else if  (currNum > boxNum && this->leftNode) {
-                        this->leftNode->remove(boxNum);
-                    }
-                }
+            Node(Box *box) {
+                data = box;
+                leftNode = nullptr;
+                rightNode = nullptr;
             }
         };
 
@@ -62,13 +31,16 @@ class BoxTree {
         BoxTree(const BoxTree &tree);
         const BoxTree & operator= (const BoxTree &tree);
 
-        void inorder();
-        void insert(Box*);
+        void copyTree(Node *&newTree, Node *oldTree);
+        void insert(Box *box);
+        void insert(Node*, Box*);
         void remove(int);
+        void remove(Node*, int);
+        void deleteNode (Node *, int);
         BoxList getRange(const int start,const int stop);
         void printLeaves();
         void getRangeRecursive(Node *node, const int start, const int end, BoxList *list);
-        void deleteLeaves(Node *node);
+        void deleteTree(Node *&node);
 };
 
 #endif //PLANTERS_BOXTREE_H

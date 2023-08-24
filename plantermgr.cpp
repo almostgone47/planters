@@ -7,25 +7,28 @@
 
 void PlanterMgr::plant(int boxNumber, const char *plantName) {
     Box *box = new Box(boxNumber, plantName);
+    if (boxNumber == 95139) {
+        cout << "";
+    }
     cout << "Planting " << plantName <<" in box " << boxNumber << endl;
     tree.insert(box);
 }
 
 void PlanterMgr::harvest(const char *plantName, int start, int end) {
     BoxList list = tree.getRange(start, end);
-    cout << "The following boxes will be harvested:" << endl;
     cout << "Harvesting " << plantName << " plants from boxes " << start << " to " << end << "." << endl;
+    cout << "The following boxes will be harvested: ";
+
     list.startIterating();
     while (list.hasNextBox()) {
-        /// There's a problem here when the box gets copied I think
         const Box *box = list.getNextBox();
         char *name = box->getPlantName();
-//        if (strcmp(name, plantName) == 0) {
-//            cout << "The following boxes will be harvested:" << endl;
-//            cout << "Harvesting " << plantName << " plants from boxes " << start << " to " << end << "." << endl;
-//        }
-    }
 
+        if (strcmp(name, plantName) == 0) {
+            cout << box->getNum() << " ";
+        }
+    }
+    cout << endl;
 }
 
 void PlanterMgr::prune(int boxNumber) {

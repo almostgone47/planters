@@ -23,7 +23,6 @@ class Box {
 
         int getNum() const;
         char* getPlantName() const;
-        void print();
 
 };
 

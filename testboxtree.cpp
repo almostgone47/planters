@@ -10,7 +10,6 @@ void runTest(const int numValues,const int* values,const int numRemoveValues,con
     bool passed = true;
 
     BoxTree bt;
-    bt.inorder();
 
     for (int i=0;i<numValues;i++)
     {
@@ -18,14 +17,11 @@ void runTest(const int numValues,const int* values,const int numRemoveValues,con
 	    bt.insert(box);
     }
 
-    bt.inorder();
-
     for (int i=0;i<numRemoveValues;i++)
     {
 	bt.remove(removeValues[i]);
     }
 
-    bt.inorder();
     if (numValues > 3)
     {
 	int a = values[0];

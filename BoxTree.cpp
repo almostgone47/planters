@@ -140,8 +140,9 @@ void BoxTree::deleteNode(Node *node, int boxNum) {
 }
 
 void BoxTree::restructureTree(Node *node) {
-    if (!node)
+    if (!node) {
         return;
+    }
 
     Node *tempLeftNode = nullptr;
     Node *tempRightNode = nullptr;

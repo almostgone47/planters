@@ -17,7 +17,7 @@ class BoxList {
         };
 
         Node *head;
-        Node *mCurrent; //"the next value to give to the caller".
+        Node *mCurrent;
         int size = 0;
 
     public:

@@ -25,6 +25,7 @@ BoxList::~BoxList() {
         head = head->next;
         delete temp;
     }
+
     head = nullptr;
     size = 0;
 };
@@ -81,18 +82,18 @@ void BoxList::insertAtTail(Box *box) {
 
 // Name:   startIterating
 // Desc:   Sets the mCurrent pointer to head.
-// Input:  None
-// Output: None
-// Return: None
+// input:  none
+// output: none
+// return: none
 void BoxList::startIterating() {
     mCurrent = head;
 }
 
 // Name:   getNextBox
 // Desc:   Returns the Box in the node that mCurrent is pointing to and then moves mCurrent to the next node.
-// Input:  None
-// Output: None
-// Return: A pointer to a Box object representing the next Box in the iteration.
+// input:  none
+// output: none
+// return: A pointer to a Box object representing the next Box in the iteration.
 const Box* BoxList::getNextBox() {
     if (mCurrent != nullptr) {
         Box *temp = mCurrent->data;
@@ -103,9 +104,9 @@ const Box* BoxList::getNextBox() {
 
 // Name:   hasNextBox
 // Desc:   Returns true if mCurrent is non-null or false otherwise.
-// Input:  None
-// Output: None
-// Return: A boolean value indicating whether there is a next Box in the iteration.
+// input:  none
+// output: none
+// return: A boolean value indicating whether there is a next Box in the iteration.
 bool BoxList::hasNextBox() {
     bool hasNext = true;
     if (mCurrent == nullptr) {

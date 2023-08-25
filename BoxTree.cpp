@@ -5,26 +5,30 @@
 #include "BoxTree.h"
 #include "BoxList.h"
 
-//Name:   BoxList
-//Desc:   Constructor for BoxList class.
-//input:  none
-//output: none
-//return: none
+// Name:   BoxTree
+// Desc:   Default Constructor
+// input:  none
+// output: none
+// return: none
 BoxTree::BoxTree() {
     root = nullptr;
     totalLeaves = 0;
 }
 
-//Name:   ~BoxList
-//Desc:   Destructor for BoxList class. The delete keyword deallocates memory and the pointers are
-//        set to null so as not to leave dangling pointers.
-//input:  none.
-//output: none
-//return: none
+// Name:   ~BoxList
+// Desc:   Destructor
+// input:  none
+// output: none
+// return: none
 BoxTree::~BoxTree() {
     deleteTree(root);
 };
 
+// Name:   deleteTree
+// Desc:   Recursively deletes the nodes in the tree rooted at the specified node, including the data contained in each node.
+// Input:  A reference to a pointer pointing to the root node of the tree.
+// Output: none
+// Return: none
 void BoxTree::deleteTree(Node *&node) {
     if (node) {
         deleteTree(node->leftNode);
@@ -35,17 +39,23 @@ void BoxTree::deleteTree(Node *&node) {
     }
 }
 
-//Name:   BoxTree
-//Desc:   Copy constructor for BoxTree class.
-//input:  none.
-//output: none
-//return: none
+// Name:   BoxTree
+// Desc:   Copy Constructor
+// input:  none
+// output: none
+// return: none
 BoxTree::BoxTree(const BoxTree &tree) {
     root = nullptr;
     totalLeaves = 0;
     copyTree(root, tree.root);
 }
 
+// Name:   copyTree
+// Desc:   Recursively copies from the existing tree (oldTree) to create a new tree rooted at newTree.
+// Input:  Reference to a pointer pointing to the root node of the new tree to be created and a Pointer to the
+//         root node of the old tree to be copied.
+// Output: none
+// Return: none
 void BoxTree::copyTree(Node *&newTree, Node *oldTree) {
     if (!oldTree) {
         newTree = nullptr;
@@ -57,11 +67,11 @@ void BoxTree::copyTree(Node *&newTree, Node *oldTree) {
     copyTree(newTree->rightNode, oldTree->rightNode);
 }
 
-//Name:   operator=
-//Desc:   Redefines = to perform deep copy.
-//input:  Reference to the linked list to copy from.
-//output: none
-//return: A reference to the linked list that used the method to copy.
+// Name:   =
+// Desc:   Assignment Operator
+// input:  Reference to a BoxTree to copy from.
+// output: none
+// return: A reference to the BoxTree that used the method to copy.
 const BoxTree & BoxTree::operator= (const BoxTree &tree) {
     if (this != &tree) {
         deleteTree(root);
@@ -73,6 +83,11 @@ const BoxTree & BoxTree::operator= (const BoxTree &tree) {
     return *this;
 }
 
+// Name:   insert
+// Desc:   Inserts a new Box into the BoxTree.
+// input:  A pointer to the Box to be inserted.
+// Output: none
+// Return: none
 void BoxTree::insert(Box *box) {
     if (!root) {
         root = new Node(box);
@@ -82,6 +97,11 @@ void BoxTree::insert(Box *box) {
     }
 }
 
+// Name:   insert
+// Desc:   Recursively inserts a new Box into the BoxTree rooted at the given node.
+// input:  A pointer to the node where the insertion should start and a pointer to the Box to be inserted.
+// output: none
+// return: none
 void BoxTree::insert(Node *node, Box *box) {
     if (box->getNum() < node->data->getNum() && node->leftNode != nullptr) {
         insert(node->leftNode, box);
@@ -102,10 +122,20 @@ void BoxTree::insert(Node *node, Box *box) {
     }
 }
 
+// Name:   remove
+// Desc:   Initiates the removal of a Box with the given box number from the BoxTree.
+// input:  Box number to be removed.
+// output: none
+// return: none
 void BoxTree::remove(int boxNum)  {
     remove(root, boxNum);
 }
 
+// Name:   remove
+// Desc:   Recursively removes a Box with the given box number from the BoxTree rooted at the given node.
+// input:  Pointer to the node where the removal should start and an integer representing the Box number to be removed.
+// output: none
+// return: none
 void BoxTree::remove(Node *node, int boxNum)  {
     if (!node) {
         return;
@@ -118,6 +148,11 @@ void BoxTree::remove(Node *node, int boxNum)  {
     }
 }
 
+// Name:   deleteNode
+// Desc:   Deletes a node with the given box number from the BoxTree.
+// input:  Pointer to the node where the deletion should occur and an integer representing the  box number to be deleted.
+// output: none
+// return: none
 void BoxTree::deleteNode(Node *node, int boxNum) {
     if (!node)
         return;
@@ -139,6 +174,11 @@ void BoxTree::deleteNode(Node *node, int boxNum) {
     }
 }
 
+// Name:   restructureTree
+// Desc:   Re-inserts nodes that were attached to removed node in order to restore the structure of the BoxTree.
+// input:  Pointer to the node that was deleted.
+// output: none
+// return: none
 void BoxTree::restructureTree(Node *node) {
     if (!node) {
         return;
@@ -171,13 +211,26 @@ void BoxTree::restructureTree(Node *node) {
     totalLeaves--;
 }
 
-
+// Name:   getRange
+// Desc:   Retrieves a BoxList containing all boxes within the specified range of box numbers.
+// input:  An integer representing the starting box number of the range and an integer representing the
+//         ending box number of the range.
+// output: none
+// return: A BoxList containing boxes within the specified range.
 BoxList BoxTree::getRange(const int start, const int end) {
     BoxList list;
     getRangeRecursive(root, start, end, &list);
     return list;
 }
 
+// Name:   getRangeRecursive
+// Desc:   Recursively populates a BoxList with boxes from the BoxTree that fall within the specified range.
+// input:  A pointer to the current node being examined.
+//         An integer for the starting box number of the range.
+//         An integer for the ending box number of the range.
+//         A pointer to the BoxList to populate.
+// output: none
+// return: none
 void BoxTree::getRangeRecursive(Node *node, const int start, const int end, BoxList *list) {
     if (node == nullptr) {
         return;
@@ -202,16 +255,32 @@ void BoxTree::getRangeRecursive(Node *node, const int start, const int end, BoxL
     }
 }
 
+// Name:   printLeaves
+// Desc:   Prints the total number of leaves (nodes) in the BoxTree.
+// input:  none
+// output: The total number of leaves.
+// return: none
 void BoxTree::printLeaves() {
     cout << totalLeaves << endl;
 }
 
+// Name:   inorder
+// Desc:   Only used by tests to print the nodes of the BoxTree in order to see what the tree actually looks like.
+// input:  none
+// output: The nodes of the BoxTree in inorder.
+// return: none
 void BoxTree::inorder() {
     cout << "____________________________________________________" << endl << endl;
     printTree(root, 0);
     cout << "____________________________________________________" << endl << endl;
 }
 
+// Name:   printTree
+// Desc:   Recursively prints the nodes of the BoxTree in a tree-like structure.
+// input:  Pointer to the current node being printed and an integer for the level of indentation for formatting the way
+//         the tree is printed.
+// output: The nodes of the BoxTree in a tree-like structure.
+// return: none
 void BoxTree::printTree(Node *node, int level) {
     if (node == nullptr) {
         return;

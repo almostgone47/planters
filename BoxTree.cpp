@@ -93,30 +93,27 @@ void BoxTree::insert(Box *box) {
         root = new Node(box);
         totalLeaves = 1;
     } else {
-        insert(root, box);
+        insertRecursive(root, box);
     }
 }
 
-// Name:   insert
+// Name:   insertRecursive
 // Desc:   Recursively inserts a new Box into the BoxTree rooted at the given node.
 // input:  A pointer to the node where the insertion should start and a pointer to the Box to be inserted.
 // output: none
 // return: none
-void BoxTree::insert(Node *node, Box *box) {
-    if (box->getNum() < node->data->getNum() && node->leftNode != nullptr) {
-        insert(node->leftNode, box);
-    } else if (box->getNum() < node->data->getNum()) {
-        if (box->getNum() == 46765) {
-            cout << "";
-        }
+void BoxTree::insertRecursive(Node *node, Box *box) {
+    int nodeBoxNum = node->data->getNum();
+    int newBoxNum = box->getNum();
+
+    if (newBoxNum < nodeBoxNum && node->leftNode != nullptr) {
+        insertRecursive(node->leftNode, box);
+    } else if (newBoxNum < nodeBoxNum) {
         node->leftNode = new Node(box);
         totalLeaves++;
-    } else if (box->getNum() > node->data->getNum() && node->rightNode != nullptr) {
-        insert(node->rightNode, box);
-    } else if (box->getNum() > node->data->getNum()) {
-        if (box->getNum() == 46765) {
-            cout << "";
-        }
+    } else if (newBoxNum > nodeBoxNum && node->rightNode != nullptr) {
+        insertRecursive(node->rightNode, box);
+    } else if (newBoxNum > nodeBoxNum) {
         node->rightNode = new Node(box);
         totalLeaves++;
     }
@@ -128,23 +125,23 @@ void BoxTree::insert(Node *node, Box *box) {
 // output: none
 // return: none
 void BoxTree::remove(int boxNum)  {
-    remove(root, boxNum);
+    removeRecursive(root, boxNum);
 }
 
-// Name:   remove
+// Name:   removeRecursive
 // Desc:   Recursively removes a Box with the given box number from the BoxTree rooted at the given node.
 // input:  Pointer to the node where the removal should start and an integer representing the Box number to be removed.
 // output: none
 // return: none
-void BoxTree::remove(Node *node, int boxNum)  {
+void BoxTree::removeRecursive(Node *node, int boxNum)  {
     if (!node) {
         return;
     } else if (node->leftNode && boxNum == node->leftNode->data->getNum() || node->rightNode && boxNum == node->rightNode->data->getNum()) {
         deleteNode(node, boxNum);
     } else if (boxNum < node->data->getNum()) {
-        remove(node->leftNode, boxNum);
+        removeRecursive(node->leftNode, boxNum);
     } else {
-        remove(node->rightNode, boxNum);
+        removeRecursive(node->rightNode, boxNum);
     }
 }
 
@@ -198,12 +195,12 @@ void BoxTree::restructureTree(Node *node) {
     }
 
     if (tempLeftNode != nullptr) {
-        insert(root, tempLeftNode->data);
+        insertRecursive(root, tempLeftNode->data);
         restructureTree(tempLeftNode);
     }
 
     if (tempRightNode != nullptr) {
-        insert(root, tempRightNode->data);
+        insertRecursive(root, tempRightNode->data);
         restructureTree(tempRightNode);
     }
 
@@ -237,10 +234,6 @@ void BoxTree::getRangeRecursive(Node *node, const int start, const int end, BoxL
     }
 
     int currNum = node->data->getNum();
-
-    if (currNum == 45691) {
-        cout << "";
-    }
 
     if (currNum >= start) {
         getRangeRecursive(node->leftNode, start, end, list);

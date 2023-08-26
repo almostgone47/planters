@@ -25,7 +25,9 @@ Implementation	    10
  - BoxList -- provides the three iteration methods
  - PlanterMgr -- doesn't have access to the nodes or pointers in the BoxList
    or BoxTree
+   ///// Remove print statements from BoxTree
  - there should be no print statements in BoxTree, BoxList, or Box
+ //// Make sure it's making deep copy in copy constructor and assignment operators
  - handles the copy constructor, assignment operator, and destructor for all classes
    that have pointer data members
  - no memory leaks or memory errors

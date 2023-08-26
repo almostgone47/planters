@@ -33,9 +33,9 @@ class BoxTree {
 
         void copyTree(Node *&newTree, Node *oldTree);
         void insert(Box *box);
-        void insert(Node*, Box*);
+        void insertRecursive(Node*, Box*);
         void remove(int);
-        void remove(Node*, int);
+        void removeRecursive(Node*, int);
         void deleteNode (Node *, int);
         void restructureTree(Node *node);
         BoxList getRange(const int start,const int stop);

@@ -41,10 +41,6 @@ class BoxTree {
         BoxList getRange(const int start,const int stop);
         void getRangeRecursive(Node *node, const int start, const int end, BoxList *list);
         void deleteTree(Node *&node);
-        // For tests
-        void inorder();
-        void printTree(Node *node, int level);
-        void printLeaves();
 
 };
 

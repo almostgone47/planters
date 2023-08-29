@@ -2,6 +2,8 @@
 // Created by Jeremiah Barro on 22/8/2023.
 //
 
+using namespace std;
+
 #include "plantermgr.h"
 #include "BoxList.h"
 

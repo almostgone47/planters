@@ -136,7 +136,7 @@ void BoxTree::remove(int boxNum)  {
 void BoxTree::removeRecursive(Node *node, int boxNum)  {
     if (!node) {
         return;
-    } else if (node->leftNode && boxNum == node->leftNode->data->getNum() || node->rightNode && boxNum == node->rightNode->data->getNum()) {
+    } else if ((node->leftNode && boxNum == node->leftNode->data->getNum()) || (node->rightNode && boxNum == node->rightNode->data->getNum())) {
         deleteNode(node, boxNum);
     } else if (boxNum < node->data->getNum()) {
         removeRecursive(node->leftNode, boxNum);
@@ -246,50 +246,4 @@ void BoxTree::getRangeRecursive(Node *node, const int start, const int end, BoxL
     if (currNum <= end) {
         getRangeRecursive(node->rightNode, start, end, list);
     }
-}
-
-// Name:   printLeaves
-// Desc:   Prints the total number of leaves (nodes) in the BoxTree.
-// input:  none
-// output: The total number of leaves.
-// return: none
-void BoxTree::printLeaves() {
-    cout << totalLeaves << endl;
-}
-
-// Name:   inorder
-// Desc:   Only used by tests to print the nodes of the BoxTree in order to see what the tree actually looks like.
-// input:  none
-// output: The nodes of the BoxTree in inorder.
-// return: none
-void BoxTree::inorder() {
-    cout << "____________________________________________________" << endl << endl;
-    printTree(root, 0);
-    cout << "____________________________________________________" << endl << endl;
-}
-
-// Name:   printTree
-// Desc:   Recursively prints the nodes of the BoxTree in a tree-like structure.
-// input:  Pointer to the current node being printed and an integer for the level of indentation for formatting the way
-//         the tree is printed.
-// output: The nodes of the BoxTree in a tree-like structure.
-// return: none
-void BoxTree::printTree(Node *node, int level) {
-    if (node == nullptr) {
-        return;
-    }
-
-    printTree(node->rightNode, level + 1);
-
-    for (int i = 0; i < level; ++i) {
-        cout << "    ";
-    }
-
-    if (node->data) {
-        cout << "+-- " << node->data->getNum() << endl;
-    } else {
-        cout << "+-- null" << endl;
-    }
-
-    printTree(node->leftNode, level + 1);
 }

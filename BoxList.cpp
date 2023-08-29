@@ -11,6 +11,7 @@
 // return: none
 BoxList::BoxList() {
     head = nullptr;
+    tail = nullptr;
     size = 0;
 }
 
@@ -27,6 +28,7 @@ BoxList::~BoxList() {
     }
 
     head = nullptr;
+    tail = nullptr;
     size = 0;
 };
 
@@ -37,6 +39,7 @@ BoxList::~BoxList() {
 // return: none
 BoxList::BoxList(const BoxList &list) {
     head = nullptr;
+    tail = nullptr;
     size = list.size;
 
     Node *curr = list.head;
@@ -45,11 +48,14 @@ BoxList::BoxList(const BoxList &list) {
     while (curr) {
         Node *newNode = new Node();
         newNode->data = curr->data;
+        newNode->next = nullptr;
 
         if (prev == nullptr) {
             head = newNode;
+            tail = newNode;
         } else {
             prev->next = newNode;
+            tail = newNode;
         }
 
         prev = newNode;
@@ -63,19 +69,16 @@ BoxList::BoxList(const BoxList &list) {
 // output: none
 // return: none
 void BoxList::insertAtTail(Box *box) {
-    Node *curr = head;
     Node *newNode = new Node();
     newNode->data = box;
+    newNode->next = nullptr;
 
-    if (curr == nullptr) {
+    if (tail == nullptr) {
         head = newNode;
     } else {
-        while (curr->next) {
-            curr = curr->next;
-        }
-
-        curr->next = newNode;
+        tail->next = newNode;
     }
+    tail = newNode;
 
     size++;
 }
@@ -95,11 +98,13 @@ void BoxList::startIterating() {
 // output: none
 // return: A pointer to a Box object representing the next Box in the iteration.
 const Box* BoxList::getNextBox() {
+    Box *temp = nullptr;
     if (mCurrent != nullptr) {
-        Box *temp = mCurrent->data;
+        temp = mCurrent->data;
         mCurrent = mCurrent->next;
-        return temp;
     }
+
+    return temp;
 }
 
 // Name:   hasNextBox
@@ -108,10 +113,5 @@ const Box* BoxList::getNextBox() {
 // output: none
 // return: A boolean value indicating whether there is a next Box in the iteration.
 bool BoxList::hasNextBox() {
-    bool hasNext = true;
-    if (mCurrent == nullptr) {
-        hasNext = false;
-    }
-
-    return hasNext;
+    return mCurrent != nullptr;
 }

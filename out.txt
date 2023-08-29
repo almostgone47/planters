@@ -15892,4 +15892,4 @@ Pruning box number 42760.
 Pruning box number 70632.
 Pruning box number 7489.
 Pruning box number 22471.
-Program execution time: 0.314673 seconds
+Program execution time: 0.135751 seconds

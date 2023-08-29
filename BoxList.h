@@ -17,6 +17,7 @@ class BoxList {
         };
 
         Node *head;
+        Node *tail;
         Node *mCurrent;
         int size = 0;
 

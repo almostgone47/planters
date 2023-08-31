@@ -9,7 +9,7 @@ clean:
 test:
 	make -C ./tests test
 
-#Copy and past the commands below to download and build Google Test library in your app
+#From the root directory copy and past the commands below to download and build Google Test library in your app
 # git clone https://github.com/google/googletest.git
 # cd googletest
 # mkdir build

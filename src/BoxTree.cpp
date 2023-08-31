@@ -3,7 +3,6 @@
 //
 
 #include "../include/BoxTree.h"
-#include "../include/BoxList.h"
 
 // Name:   BoxTree
 // Desc:   Default Constructor

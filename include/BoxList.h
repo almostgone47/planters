@@ -30,6 +30,7 @@ class BoxList {
         void startIterating();
         const Box* getNextBox();
         bool hasNextBox();
+        int getSize();
 
 };
 

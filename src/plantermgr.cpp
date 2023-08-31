@@ -4,8 +4,8 @@
 
 using namespace std;
 
-#include "plantermgr.h"
-#include "BoxList.h"
+#include "../include/plantermgr.h"
+#include "../include/BoxList.h"
 
 // Name:   plant
 // Desc:   Creates a new Box with the specified box number and plant name, and inserts it into the BoxTree.

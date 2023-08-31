@@ -2,8 +2,8 @@
 // Created by Jeremiah Barro on 22/8/2023.
 //
 
-#include "BoxTree.h"
-#include "BoxList.h"
+#include "../include/BoxTree.h"
+#include "../include/BoxList.h"
 
 // Name:   BoxTree
 // Desc:   Default Constructor
@@ -246,4 +246,8 @@ void BoxTree::getRangeRecursive(Node *node, const int start, const int end, BoxL
     if (currNum <= end) {
         getRangeRecursive(node->rightNode, start, end, list);
     }
+}
+
+int BoxTree::getTotalLeaves() {
+    return totalLeaves;
 }

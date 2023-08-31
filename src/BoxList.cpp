@@ -2,7 +2,7 @@
 // Created by Jeremiah Barro on 22/8/2023.
 //
 
-#include "BoxList.h"
+#include "../include/BoxList.h"
 
 // Name:   BoxList
 // Desc:   Default Constructor
@@ -114,4 +114,8 @@ const Box* BoxList::getNextBox() {
 // return: A boolean value indicating whether there is a next Box in the iteration.
 bool BoxList::hasNextBox() {
     return mCurrent != nullptr;
+}
+
+int BoxList::getSize() {
+    return size;
 }

@@ -1,17 +1,23 @@
-CC = g++
-CPPFLAGS = -std=c++17 -Wall -g
-
-planters: planters.o Box.o BoxList.o BoxTree.o plantermgr.o
-
-planters.o: planters.cpp
-
-plantermgr.o: plantermgr.cpp plantermgr.h
-
-Box.o: Box.cpp Box.h
-
-BoxList.o: BoxList.cpp BoxList.h
-
-BoxTree.o: BoxTree.cpp BoxTree.h
+all:
+	make -C ./src
+	make -C ./tests
 
 clean:
-	rm *.o planters
+	make -C ./src clean
+	make -C ./tests clean
+
+test:
+	make -C ./tests test
+
+#Copy and past the commands below to download and build Google Test library in your app
+# git clone https://github.com/google/googletest.git
+# cd googletest
+# mkdir build
+# cd build
+# cmake ..
+# make
+
+# Now run to run the unit tests the makefile targets:
+# make all
+# make test
+

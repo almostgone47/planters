@@ -1,5 +1,5 @@
 #include <iostream>
-#include "box.h"
+#include "include/Box.h"
 #include "testutil.h"
 
 using namespace std;

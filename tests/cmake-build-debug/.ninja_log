@@ -1,0 +1,16 @@
+# ninja log v5
+2	6593	1693458483805153359	googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	5d023cd122bfa1f3
+20	1559	1693462624299643795	CMakeFiles/tests.dir/box_tests.cpp.o	42ef016fed64cb43
+20	1221	1693463869475444256	CMakeFiles/tests.dir/boxtree_tests.cpp.o	70b8c4457ee8affc
+1	2710	1693458479943070819	CMakeFiles/tests.dir/boxlist_tests.cpp.o	d6e88145c6b23b35
+6827	6913	1693458484158987000	lib/libgtest_main.a	2b0fb6f4f3745fc5
+9	1099	1693459774158450870	CMakeFiles/tests.dir/plantermgr_tests.cpp.o	e89e15de0ba9c7b2
+1	346	1693466295460330725	build.ninja	a6d704539c6306ab
+4	2550	1693458479780952163	googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	c639bd9005d175e3
+52	743	1693458798429420380	CMakeFiles/tests.dir/Users/jeremiah/CLionProjects/planters/src/Box.cpp.o	6ce0a2f88525d94d
+6594	6826	1693458484072816000	lib/libgtest.a	c7f5eb9e1ce92ba6
+52	749	1693458798436138131	CMakeFiles/tests.dir/Users/jeremiah/CLionProjects/planters/src/BoxTree.cpp.o	6b7574b6db9adb45
+1221	1348	1693463869602379679	tests	b13110dab96df49b
+51	770	1693458798457385413	CMakeFiles/tests.dir/Users/jeremiah/CLionProjects/planters/src/PlanterMgr.cpp.o	5d16ed18917152d3
+52	742	1693458798428402240	CMakeFiles/tests.dir/Users/jeremiah/CLionProjects/planters/src/BoxList.cpp.o	4ba9f020d4149fd3
+10	1146	1693460769833865283	CMakeFiles/tests.dir/performance_tests.cpp.o	ace8682ee4d7d32f

@@ -1,8 +1,8 @@
 //
 // Created by Jeremiah Barro on 22/8/2023.
 //
-
-#include "Box.h"
+#include <cstring>
+#include "../include/Box.h"
 
 // Name:   Box
 // Desc:   Box Constructor

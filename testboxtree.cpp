@@ -34,7 +34,7 @@ void runTest(const int numValues,const int* values,const int numRemoveValues,con
 	}
     }
 
-    cout << "Leaves:" << endl;
+    cout << "Nodes:" << endl;
     cout << endl;
 }
 

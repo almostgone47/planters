@@ -30,7 +30,7 @@ BoxList::~BoxList() {
     head = nullptr;
     tail = nullptr;
     size = 0;
-};
+}
 
 // Name:   BoxList
 // Desc:   Copy Constructor
@@ -46,8 +46,9 @@ BoxList::BoxList(const BoxList &list) {
     Node *prev = nullptr;
 
     while (curr) {
+        Box *newBox = new Box(*curr->data);
         Node *newNode = new Node();
-        newNode->data = curr->data;
+        newNode->data = newBox;
         newNode->next = nullptr;
 
         if (prev == nullptr) {
@@ -61,7 +62,7 @@ BoxList::BoxList(const BoxList &list) {
         prev = newNode;
         curr = curr->next;
     }
-};
+}
 
 // Name:   insertAtTail
 // Desc:   Adds a Node to the end of the BoxList linked list.
@@ -97,14 +98,14 @@ void BoxList::startIterating() {
 // input:  none
 // output: none
 // return: A pointer to a Box object representing the next Box in the iteration.
-const Box* BoxList::getNextBox() {
-    Box *temp = nullptr;
+const Box& BoxList::getNextBox() {
+    const Box *temp = nullptr;
     if (mCurrent != nullptr) {
         temp = mCurrent->data;
         mCurrent = mCurrent->next;
     }
 
-    return temp;
+    return *temp;
 }
 
 // Name:   hasNextBox
@@ -116,6 +117,11 @@ bool BoxList::hasNextBox() {
     return mCurrent != nullptr;
 }
 
+// Name:   getSize
+// Desc:   Getter for checking the size of the linked list.
+// input:  none
+// output: none
+// return: An integer for how long the linked list is.
 int BoxList::getSize() {
     return size;
 }

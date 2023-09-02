@@ -28,7 +28,7 @@ class BoxList {
 
         void insertAtTail(Box*);
         void startIterating();
-        const Box* getNextBox();
+        const Box& getNextBox();
         bool hasNextBox();
         int getSize();
 

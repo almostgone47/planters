@@ -34,7 +34,7 @@ TEST(BoxTreeTest, TestInsertAndRemove) {
         bt.remove(removeValues[i]);
     }
 
-    EXPECT_EQ(bt.getTotalLeaves(), numValues - numRemoveValues);
+    EXPECT_EQ(bt.getTotalNodes(), numValues - numRemoveValues);
 
     // After removing 24 and 100
     BoxList rangeList = bt.getRange(24, 181);

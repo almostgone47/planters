@@ -32,13 +32,14 @@ void PlanterMgr::harvest(const char *plantName, int start, int end) {
 
     list.startIterating();
     while (list.hasNextBox()) {
-        const Box *box = list.getNextBox();
-        char *name = box->getPlantName();
+        const Box &box = list.getNextBox();
+        char *name = box.getPlantName();
 
         if (strcmp(name, plantName) == 0) {
-            cout << box->getNum() << " ";
+            cout << box.getNum() << " ";
         }
     }
+
     cout << endl;
 }
 

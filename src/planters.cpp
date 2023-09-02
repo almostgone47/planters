@@ -64,7 +64,6 @@ void prune(PlanterMgr& planterMgr,char* line)
 
 int main(int argc,char** argv)
 {
-    auto start = std::chrono::high_resolution_clock::now();
     if (argc != 2)
     {
         cout << "Usage: " << argv[0] << " <datafile>" << endl;
@@ -132,11 +131,6 @@ int main(int argc,char** argv)
         }
     }
     infile.close();
-
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> duration = end - start;
-
-    std::cout << "Program execution time: " << duration.count() << " seconds" << std::endl;
 
     return(0);
 }

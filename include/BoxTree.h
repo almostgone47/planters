@@ -23,7 +23,7 @@ class BoxTree {
         };
 
         Node *root;
-        int totalLeaves;
+        int totalNodes;
 
     public:
         BoxTree();
@@ -41,7 +41,7 @@ class BoxTree {
         BoxList getRange(const int start,const int stop);
         void getRangeRecursive(Node *node, const int start, const int end, BoxList *list);
         void deleteTree(Node *&node);
-        int getTotalLeaves();
+        int getTotalNodes();
 
 };
 

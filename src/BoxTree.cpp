@@ -11,7 +11,7 @@
 // return: none
 BoxTree::BoxTree() {
     root = nullptr;
-    totalLeaves = 0;
+    totalNodes = 0;
 }
 
 // Name:   ~BoxList
@@ -45,7 +45,7 @@ void BoxTree::deleteTree(Node *&node) {
 // return: none
 BoxTree::BoxTree(const BoxTree &tree) {
     root = nullptr;
-    totalLeaves = 0;
+    totalNodes = 0;
     copyTree(root, tree.root);
 }
 
@@ -76,7 +76,7 @@ const BoxTree & BoxTree::operator= (const BoxTree &tree) {
         deleteTree(root);
 
         copyTree(root, tree.root);
-        totalLeaves = tree.totalLeaves;
+        totalNodes = tree.totalNodes;
     }
 
     return *this;
@@ -90,7 +90,7 @@ const BoxTree & BoxTree::operator= (const BoxTree &tree) {
 void BoxTree::insert(Box *box) {
     if (!root) {
         root = new Node(box);
-        totalLeaves = 1;
+        totalNodes = 1;
     } else {
         insertRecursive(root, box);
     }
@@ -109,12 +109,12 @@ void BoxTree::insertRecursive(Node *node, Box *box) {
         insertRecursive(node->leftNode, box);
     } else if (newBoxNum < nodeBoxNum) {
         node->leftNode = new Node(box);
-        totalLeaves++;
+        totalNodes++;
     } else if (newBoxNum > nodeBoxNum && node->rightNode != nullptr) {
         insertRecursive(node->rightNode, box);
     } else if (newBoxNum > nodeBoxNum) {
         node->rightNode = new Node(box);
-        totalLeaves++;
+        totalNodes++;
     }
 }
 
@@ -204,7 +204,7 @@ void BoxTree::restructureTree(Node *node) {
     }
 
     delete node;
-    totalLeaves--;
+    totalNodes--;
 }
 
 // Name:   getRange
@@ -247,6 +247,11 @@ void BoxTree::getRangeRecursive(Node *node, const int start, const int end, BoxL
     }
 }
 
-int BoxTree::getTotalLeaves() {
-    return totalLeaves;
+// Name:   getTotalNodes
+// Desc:   Getter for checking the size of the binary search tree.
+// input:  none
+// output: none
+// return: An integer for how long the binary search tree is.
+int BoxTree::getTotalNodes() {
+    return totalNodes;
 }
